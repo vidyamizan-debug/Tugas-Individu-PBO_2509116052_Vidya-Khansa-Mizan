@@ -60,83 +60,94 @@ Seperti yang dapat dilihat pada gambar di atas, class Layanan merupakan supercla
 Kedua gambar di atas menunjukkan bahwa class  Perawatan dan Penitipan merupakan subclass yang menggunakan extends Layanan, sehingga mewarisi seluruh atribut dan method dari Layanan, ditambah atribut khusus masing-masing (jenisPerawatan untuk Perawatan, lamaPenitipan untuk Penitipan). Kedua subclass tersebut memanggil constructor superclass menggunakan super(...) untuk mengisi atribut umum sebelum mengisi atribut khususnya sendiri.
 
 ## Penerapan Nilai Tambah
+Penerapan nilai tambah yang saya gunakan ada dua, yaitu penerapan pola MVC (Model-View-Controller) dan Polymorphism.
+
+### MVC (Model-View-Controller)
+MVC digunakan agar kode program tidak tercampur dalam satu class besar. Dengan MVC, tampilan menu, penyimpanan data, dan proses logika program dipisah menjadi tiga bagian dengan tanggung jawabnya masing-masing, sehingga program lebih rapi, lebih mudah ditelusuri kalau ada kesalahan, dan lebih mudah dikembangkan tanpa mengganggu bagian lain.
+
+<img width="214" height="175" alt="image" src="https://github.com/user-attachments/assets/fb50137a-1166-4d8c-95ad-b6d226aec9b8" />
+
+Dapat dilihat dari gambar di atas, package model berisi class Layanan, Perawatan, dan Penitipan. Bagian ini murni menyimpan data dan perilaku dasar objek, tanpa ada kode input/output menu di dalamnya. Selanjutnya ada package view berisi class Menu, yang tugasnya hanya menampilkan tampilan menu ke layar tanpa menyimpan data atau logika pemrosesan. Dan yang terakhir ialah package controller berisi class CekKyaPetCare (khusus validasi input) dan CRUDLayananKyaPetCare (khusus proses tambah, tampil, update, dan hapus data). Bagian ini menghubungkan Model dan View, yaitu mengambil input dari pengguna, memvalidasinya, memproses data pada objek Model, lalu meminta View menampilkan tampilan.
+
+### Polymorphism
+Polymorphism digunakan agar satu ArrayList bertipe Layanan bisa menampung objek Perawatan maupun Penitipan sekaligus, dan cukup dipanggil dengan cara yang sama (disini saya menggunakan 'tampilkanInfo()') tanpa harus membuat banyak percabangan untuk mengecek jenis objeknya satu per satu.
+
+<img width="403" height="149" alt="image" src="https://github.com/user-attachments/assets/3f28de75-8da7-4068-a808-e0a91be43d4e" />
+
+Pada gambar di atas, dapat dilihat bahwa polymorphism diterapkan melalui method overriding pada method tampilkanInfo() yang ada di superclass Layanan. Method ini di-override oleh subclass Perawatan dan Penitipan, sehingga meskipun dipanggil dengan cara yang sama, hasil tampilan informasinya berbeda tergantung jenis objeknya.
+
+<img width="422" height="83" alt="image" src="https://github.com/user-attachments/assets/055bee08-fa8c-482e-8669-bf60bde53ce9" />
+
+Jika objeknya Penitipan, tampilkanInfo() akan menampilkan info umum layanan ditambah baris lama penitipan.
+
+<img width="378" height="86" alt="image" src="https://github.com/user-attachments/assets/54673b9b-885d-4d9b-ac7e-d0da1ec08223" />
+
+Jika objeknya Perawatan, tampilkanInfo() akan menampilkan info umum layanan ditambah baris jenis perawatan.
+
+## Tampilan Output Sistem
 
 **1. Tampilan Menu Utama**
 
-<img width="178" height="141" alt="image" src="https://github.com/user-attachments/assets/a28c81b8-86ac-4cf1-92ed-22fe2d7c5c20" />
+<img width="167" height="127" alt="image" src="https://github.com/user-attachments/assets/11045686-6b2e-4e70-b837-f01c74818ee4" />
 
-gambar di atas merupakan tampilan awal atau yang biasa disebut menu utama dari program yang telah saya rancang dan jalankan. Dapat dilihat bahwa menu utamanya memiliki 5 pilihan utama, yaitu menambah data, menampilkan data, menghapus data, mengupdate data, dan menu keluar. 
+Gambar di atas merupakan tampilan awal atau yang biasa disebut menu utama dari program yang telah saya rancang dan jalankan. Dapat dilihat bahwa menu utamanya memiliki 5 pilihan utama, yaitu Tambah Data Layanan, Tampilkan Data Layanan, Update Data Layanan, Hapus Data Layanan, dan Keluar.
 
 **2. Tambah Data**
 
-<img width="178" height="101" alt="image" src="https://github.com/user-attachments/assets/63b2f7b5-1066-4567-bf9b-7994004d5810" />
+<img width="152" height="92" alt="image" src="https://github.com/user-attachments/assets/d1d88541-d2fa-4090-8894-ce8b0db8ac4a" />
 
-Setelah memilih menu nomor pertama, maka kita akan dialihkan ke pilihan menu untuk menambahkan data pemilik hewan, hewan yang akan dilayani, ataupun pelayanan yang ingin ditambahkan datanya.
+Setelah memilih menu nomor pertama, maka kita akan dialihkan ke pilihan menu untuk menambahkan jenis layanan. Dapat dilihat bahwa pada submenu Tambah Data Layanan terdapat 2 pilihan, yaitu Perawatan dan Penitipan.
 
-- Tambah Data Pemilik
+* Tambah Data Layanan Perawatan
 
-<img width="191" height="116" alt="image" src="https://github.com/user-attachments/assets/0ffcb981-24b2-48c9-8bc5-b15857b5da3d" />
+<img width="221" height="233" alt="image" src="https://github.com/user-attachments/assets/6522e991-ec21-42dc-a2f8-34185e95074b" />
 
-Jika memilih untuk menambahkan data pemilik, maka kita akan diminta untuk mengisi formulir data seperti pada gambar di atas.
+Jika memilih opsi nomor 1 (perawatan), kita diminta mengisi formulir data layanan seperti pada gambar. Setelah diisi, muncul notifikasi "Horee! data sudah berhasil ditambahkan." yang menandakan data telah tersimpan.
 
-- Tambah Data Hewan
+* Tambah Data Layanan Penitipan
 
-<img width="185" height="128" alt="image" src="https://github.com/user-attachments/assets/e5ad43aa-d34f-49db-852f-78ea8d5d6c39" />
+<img width="215" height="233" alt="image" src="https://github.com/user-attachments/assets/54259fbe-ba41-4a36-84f8-f202f5b28887" />
 
-Jika memilih untuk menambahkan data hewan, maka kita akan diminta untuk mengisi formulir data seperti pada gambar di atas.
-
-- Tambah Data Layanan
-
-<img width="237" height="115" alt="image" src="https://github.com/user-attachments/assets/b52eed40-6917-42c7-a06e-48dbddffa4c2" />
-
-Jika memilih untuk menambahkan data layanan, maka kita akan diminta untuk mengisi formulir data seperti pada gambar di atas.
+Jika memilih opsi nomor 2 (penitipan), kita diminta mengisi formulir data layanan seperti pada gambar. Setelah diisi, muncul notifikasi "Horee! data sudah berhasil ditambahkan." yang menandakan data telah tersimpan.
 
 **3. Tampilkan Data**
 
-<img width="181" height="101" alt="image" src="https://github.com/user-attachments/assets/d1fe2dd3-1d15-42af-8c98-bb9a43e51a9d" />
+<img width="169" height="130" alt="image" src="https://github.com/user-attachments/assets/54ed4e76-4d8f-4d8a-8861-ccb157958328" />
 
-Setelah memilih menu nomor kedua, maka kita akan dialihkan ke pilihan menu untuk menampilkan seluruh data pemilik hewan, hewan yang akan dilayani, ataupun pelayanan yang ingin ditampilkan datanya.
+Selanjutnya, jika memilih menu nomor 2 pada menu utama, maka kita akan dialihkan ke tampilan halaman untuk menampilkan data layanan.
 
-- Tambah Data Pemilik
+<img width="246" height="382" alt="image" src="https://github.com/user-attachments/assets/feab7ca1-1d49-4fb5-8784-1499ce420ba1" />
 
-<img width="183" height="116" alt="image" src="https://github.com/user-attachments/assets/1273ca9d-d6a8-4ec3-bac6-7a50ec52e659" />
+<img width="228" height="341" alt="image" src="https://github.com/user-attachments/assets/66c67345-4b39-489e-a6ac-2ec49f8b9e7d" />
 
-Jika memilih untuk menampilkan data pemilik yang telah dibuat, maka sistem akan menampilkan data pemilik yang tersimpan seperti pada gambar di atas.
+Kedua gambar di atas merupakan tampilan daftar Data Layanan yang berfungsi untuk menampilkan seluruh data layanan yang telah tersimpan di dalam sistem.
 
-- Tambah Data Hewan
+**4. Update Data**
 
-<img width="184" height="128" alt="image" src="https://github.com/user-attachments/assets/3926684c-ca45-4375-bf17-9b89068ee0c0" />
+<img width="170" height="128" alt="image" src="https://github.com/user-attachments/assets/93035bc0-dd49-46c3-aa63-b3a0fc0f9fa4" />
 
-Jika memilih untuk menampilkan data hewan yang telah dibuat, maka sistem akan menampilkan data pemilik yang tersimpan seperti pada gambar di atas.
+Selanjutnya, jika memilih menu nomor 3 pada menu utama, maka kita akan dialihkan ke tampilan halaman untuk mengupdate data layanan.
 
-- Tambah Data Layanan
+<img width="227" height="196" alt="image" src="https://github.com/user-attachments/assets/5b98a945-81e3-4394-bcd5-b420f366170a" />
 
-<img width="232" height="113" alt="image" src="https://github.com/user-attachments/assets/5a186067-721a-4351-96e9-70e10260b790" />
+Pada menu Update Data Layanan, kita diminta untuk memasukkan ID Layanan yang ingin diubah, lalu mengisi formulir data baru seperti pada gambar di atas. Setelah seluruh data diisi, sistem akan menampilkan notifikasi "Horee! data sudah berhasil diupdate." yang menandakan data telah diperbarui.
 
-Jika memilih untuk menampilkan data layanan yang telah dibuat, maka sistem akan menampilkan data pemilik yang tersimpan seperti pada gambar di atas.
+**5. Hapus Data**
 
-**4. Hapus Data**
+<img width="169" height="131" alt="image" src="https://github.com/user-attachments/assets/a741f413-3cd0-4d9d-81b6-fbde05743352" />
 
-<img width="179" height="100" alt="image" src="https://github.com/user-attachments/assets/ab9d3220-76fc-4bc3-8f91-7a7546b14e45" />
+Selanjutnya, jika memilih menu nomor 4 pada menu utama, maka kita akan dialihkan ke tampilan halaman untuk menghapus data layanan.
 
-Setelah memilih menu nomor ketiga, maka kita akan dialihkan ke pilihan menu untuk menghapus data dari pemilik hewan, hewan yang akan dilayani, ataupun pelayanan yang ingin dihapus datanya.
+<img width="265" height="244" alt="image" src="https://github.com/user-attachments/assets/fb248c43-09d8-478d-9f8e-c799e4abc9b8" />
 
-<img width="175" height="178" alt="image" src="https://github.com/user-attachments/assets/be80175b-c062-4661-ab45-ea7714e213dd" />
+Pada menu Hapus Data Layanan, kita diminta untuk memasukkan ID Layanan yang ingin dihapus terlebih dahulu. Setelah detail data ditampilkan, sistem akan meminta konfirmasi penghapusan (ya/tidak). Jika memilih "ya", maka sistem akan menampilkan notifikasi "Data layanan berhasil dihapus!" yang menandakan data telah terhapus dari sistem.
 
-Disini, saya memilih untuk menghapus data yang tersimpan di dalam data layanan. Dan dapat dilihat bahwa data berhasil untuk dihapus.
+<img width="276" height="242" alt="image" src="https://github.com/user-attachments/assets/e5abb47b-a181-4066-90f4-7ea706f8f2ec" />
 
-**5. Update Data**
-
-<img width="179" height="100" alt="image" src="https://github.com/user-attachments/assets/a751ae90-c17d-4640-8c24-6760f8b6a4d1" />
-
-Setelah memilih menu nomor keempat, maka kita akan dialihkan ke pilihan menu untuk mengupdate data yang telah tersimpan di daya pemilik hewan, hewan yang akan dilayani, ataupun pelayanan yang ingin diupdate datanya.
-
-<img width="181" height="229" alt="image" src="https://github.com/user-attachments/assets/e7aae0d6-e793-4926-958f-8c082b9dbff4" />
-
-Disini, saya memilih untuk mengupdate data ynag telah tersimpan di dalam data hewan. Saya mengupdate jenis ras nya yang awalnya ialah ras 'anggora', menjadi ras 'himalayan'.
+Jika memilih "tidak" pada konfirmasi penghapusan data, maka sistem akan menampilkan notifikasi "Penghapusan data dibatalkan." yang menandakan data tidak jadi dihapus dari sistem.
 
 **6. Keluar**
 
-<img width="185" height="168" alt="image" src="https://github.com/user-attachments/assets/0d77035a-d627-4f05-abc9-7c0ba4c1c314" />
+<img width="173" height="190" alt="image" src="https://github.com/user-attachments/assets/17035eca-7f41-4a98-8e5c-842a60611d23" />
 
 Jika jita memilih menu nomor kelima, maka kita akan dikeluarkan dari sistem.
