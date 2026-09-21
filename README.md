@@ -33,8 +33,31 @@ Alur program dimulai ketika program dijalankan melalui class Minpro2PBOKyaPetCar
 Pengguna memilih menu dengan memasukkan angka sesuai pilihan. Program kemudian menggunakan percabangan untuk menentukan proses yang akan dijalankan berdasarkan pilihan pengguna. Pada menu Tambah Data, Tampilkan Data, Hapus Data, dan Update Data. Berbeda dengan pengerjaan sebelumnya yang memisahkan data Pemilik, Hewan, dan Layanan, pada Minpro 2 ini data hewan dan pemilik digabungkan menjadi atribut di dalam data Layanan itu sendiri, sehingga satu data layanan sudah mewakili satu transaksi lengkap untuk satu hewan. Pengguna cukup memilih jenis layanannya (Perawatan atau Penitipan) saat menambah data.
 
 ## Penerapan Encapsulation
+Encapsulation diterapkan pada seluruh class di package model, yaitu class Layanan, Perawatan, Penitipan.
+
+<img width="207" height="133" alt="image" src="https://github.com/user-attachments/assets/4cc0280c-653f-47b7-83c7-df127387cc68" />
+
+Seperti yang dapt dilihat pada gambar di atas, seluruh atribut yang berada di dalam class Layanan, yang nantinya akan diturunkan ke subclass, dibuat menjadi protected. Sehingga data tidak dapat diakses langsung dari luar class. Untuk atribut id dibuat menjadi private final, sehingga hanya bisa sekali lewat di constructor dan tidak memiliki setter.
+
+<img width="197" height="39" alt="image" src="https://github.com/user-attachments/assets/2da2dd8a-66f9-4905-8c74-412623e2c69d" />
+
+
+<img width="293" height="41" alt="image" src="https://github.com/user-attachments/assets/e8027d65-d902-427f-816c-925a32c743d0" />
+
+Setiap atribut yang boleh diubah memiliki getter dan setter, sehingga perubahan data hanya bisa dilakukan lewat method yang sudah disediakan. Hal ini berlaku untuk semua atribut kecuali atribut id.
 
 ## Penerapan Inheritance
+Inheritance diterapkan pada class yang berada di package model.
+
+<img width="619" height="310" alt="image" src="https://github.com/user-attachments/assets/116dd1b4-bb86-4c20-af6c-3b10657240e7" />
+
+Seperti yang dapat dilihat pada gambar di atas, class Layanan merupakan superclass yang menyimpan atribut umum (idLayanan, namaLayanan, deskripsi, harga) beserta data hewan terkait (namaHewan, namaPemilik, jenisHewan, rasHewan, umurHewan).
+
+<img width="685" height="119" alt="image" src="https://github.com/user-attachments/assets/094c72b7-b78b-48ac-b155-92ae59613c92" />
+
+<img width="683" height="121" alt="image" src="https://github.com/user-attachments/assets/6ed64378-fbcd-45e5-8aba-e471bc3c494c" />
+
+Kedua gambar di atas menunjukkan bahwa class  Perawatan dan Penitipan merupakan subclass yang menggunakan extends Layanan, sehingga mewarisi seluruh atribut dan method dari Layanan, ditambah atribut khusus masing-masing (jenisPerawatan untuk Perawatan, lamaPenitipan untuk Penitipan). Kedua subclass tersebut memanggil constructor superclass menggunakan super(...) untuk mengisi atribut umum sebelum mengisi atribut khususnya sendiri.
 
 ## Penerapan Nilai Tambah
 
