@@ -32,19 +32,6 @@ Alur program dimulai ketika program dijalankan melalui class Minpro2PBOKyaPetCar
 
 Pengguna memilih menu dengan memasukkan angka sesuai pilihan. Program kemudian menggunakan percabangan untuk menentukan proses yang akan dijalankan berdasarkan pilihan pengguna. Pada menu Tambah Data, Tampilkan Data, Hapus Data, dan Update Data. Berbeda dengan pengerjaan sebelumnya yang memisahkan data Pemilik, Hewan, dan Layanan, pada Minpro 2 ini data hewan dan pemilik digabungkan menjadi atribut di dalam data Layanan itu sendiri, sehingga satu data layanan sudah mewakili satu transaksi lengkap untuk satu hewan. Pengguna cukup memilih jenis layanannya (Perawatan atau Penitipan) saat menambah data.
 
-## Penerapan Encapsulation
-Encapsulation diterapkan pada seluruh class di package model, yaitu class Layanan, Perawatan, Penitipan.
-
-<img width="207" height="133" alt="image" src="https://github.com/user-attachments/assets/4cc0280c-653f-47b7-83c7-df127387cc68" />
-
-Seperti yang dapt dilihat pada gambar di atas, seluruh atribut yang berada di dalam class Layanan, yang nantinya akan diturunkan ke subclass, dibuat menjadi protected. Sehingga data tidak dapat diakses langsung dari luar class. Untuk atribut id dibuat menjadi private final, sehingga hanya bisa sekali lewat di constructor dan tidak memiliki setter.
-
-<img width="197" height="39" alt="image" src="https://github.com/user-attachments/assets/2da2dd8a-66f9-4905-8c74-412623e2c69d" />
-
-<img width="293" height="41" alt="image" src="https://github.com/user-attachments/assets/e8027d65-d902-427f-816c-925a32c743d0" />
-
-Setiap atribut yang boleh diubah memiliki getter dan setter, sehingga perubahan data hanya bisa dilakukan lewat method yang sudah disediakan. Hal ini berlaku untuk semua atribut kecuali atribut id.
-
 ## Penerapan Inheritance
 Inheritance diterapkan pada class yang berada di package model.
 
@@ -57,31 +44,6 @@ Seperti yang dapat dilihat pada gambar di atas, class Layanan merupakan supercla
 <img width="683" height="121" alt="image" src="https://github.com/user-attachments/assets/6ed64378-fbcd-45e5-8aba-e471bc3c494c" />
 
 Kedua gambar di atas menunjukkan bahwa class  Perawatan dan Penitipan merupakan subclass yang menggunakan extends Layanan, sehingga mewarisi seluruh atribut dan method dari Layanan, ditambah atribut khusus masing-masing (jenisPerawatan untuk Perawatan, lamaPenitipan untuk Penitipan). Kedua subclass tersebut memanggil constructor superclass menggunakan super(...) untuk mengisi atribut umum sebelum mengisi atribut khususnya sendiri.
-
-## Penerapan Nilai Tambah
-Penerapan nilai tambah yang saya gunakan ada dua, yaitu penerapan pola MVC (Model-View-Controller) dan Polymorphism.
-
-### MVC (Model-View-Controller)
-MVC digunakan agar kode program tidak tercampur dalam satu class besar. Dengan MVC, tampilan menu, penyimpanan data, dan proses logika program dipisah menjadi tiga bagian dengan tanggung jawabnya masing-masing, sehingga program lebih rapi, lebih mudah ditelusuri kalau ada kesalahan, dan lebih mudah dikembangkan tanpa mengganggu bagian lain.
-
-<img width="214" height="175" alt="image" src="https://github.com/user-attachments/assets/fb50137a-1166-4d8c-95ad-b6d226aec9b8" />
-
-Dapat dilihat dari gambar di atas, package model berisi class Layanan, Perawatan, dan Penitipan. Bagian ini murni menyimpan data dan perilaku dasar objek, tanpa ada kode input/output menu di dalamnya. Selanjutnya ada package view berisi class Menu, yang tugasnya hanya menampilkan tampilan menu ke layar tanpa menyimpan data atau logika pemrosesan. Dan yang terakhir ialah package controller berisi class CekKyaPetCare (khusus validasi input) dan CRUDLayananKyaPetCare (khusus proses tambah, tampil, update, dan hapus data). Bagian ini menghubungkan Model dan View, yaitu mengambil input dari pengguna, memvalidasinya, memproses data pada objek Model, lalu meminta View menampilkan tampilan.
-
-### Polymorphism
-Polymorphism digunakan agar satu ArrayList bertipe Layanan bisa menampung objek Perawatan maupun Penitipan sekaligus, dan cukup dipanggil dengan cara yang sama (disini saya menggunakan 'tampilkanInfo()') tanpa harus membuat banyak percabangan untuk mengecek jenis objeknya satu per satu.
-
-<img width="403" height="149" alt="image" src="https://github.com/user-attachments/assets/3f28de75-8da7-4068-a808-e0a91be43d4e" />
-
-Pada gambar di atas, dapat dilihat bahwa polymorphism diterapkan melalui method overriding pada method tampilkanInfo() yang ada di superclass Layanan. Method ini di-override oleh subclass Perawatan dan Penitipan, sehingga meskipun dipanggil dengan cara yang sama, hasil tampilan informasinya berbeda tergantung jenis objeknya.
-
-<img width="422" height="83" alt="image" src="https://github.com/user-attachments/assets/055bee08-fa8c-482e-8669-bf60bde53ce9" />
-
-Jika objeknya Penitipan, tampilkanInfo() akan menampilkan info umum layanan ditambah baris lama penitipan.
-
-<img width="378" height="86" alt="image" src="https://github.com/user-attachments/assets/54673b9b-885d-4d9b-ac7e-d0da1ec08223" />
-
-Jika objeknya Perawatan, tampilkanInfo() akan menampilkan info umum layanan ditambah baris jenis perawatan.
 
 ## Tampilan Output Sistem
 
