@@ -41,7 +41,6 @@ Seperti yang dapt dilihat pada gambar di atas, seluruh atribut yang berada di da
 
 <img width="197" height="39" alt="image" src="https://github.com/user-attachments/assets/2da2dd8a-66f9-4905-8c74-412623e2c69d" />
 
-
 <img width="293" height="41" alt="image" src="https://github.com/user-attachments/assets/e8027d65-d902-427f-816c-925a32c743d0" />
 
 Setiap atribut yang boleh diubah memiliki getter dan setter, sehingga perubahan data hanya bisa dilakukan lewat method yang sudah disediakan. Hal ini berlaku untuk semua atribut kecuali atribut id.
@@ -86,13 +85,13 @@ Jika objeknya Perawatan, tampilkanInfo() akan menampilkan info umum layanan dita
 
 ## Tampilan Output Sistem
 
-**1. Tampilan Menu Utama**
+**1. Menu Utama**
 
 <img width="167" height="127" alt="image" src="https://github.com/user-attachments/assets/11045686-6b2e-4e70-b837-f01c74818ee4" />
 
 Gambar di atas merupakan tampilan awal atau yang biasa disebut menu utama dari program yang telah saya rancang dan jalankan. Dapat dilihat bahwa menu utamanya memiliki 5 pilihan utama, yaitu Tambah Data Layanan, Tampilkan Data Layanan, Update Data Layanan, Hapus Data Layanan, dan Keluar.
 
-**2. Tambah Data**
+**2. Tambah Data Layanan**
 
 <img width="152" height="92" alt="image" src="https://github.com/user-attachments/assets/d1d88541-d2fa-4090-8894-ce8b0db8ac4a" />
 
@@ -110,7 +109,7 @@ Jika memilih opsi nomor 1 (perawatan), kita diminta mengisi formulir data layana
 
 Jika memilih opsi nomor 2 (penitipan), kita diminta mengisi formulir data layanan seperti pada gambar. Setelah diisi, muncul notifikasi "Horee! data sudah berhasil ditambahkan." yang menandakan data telah tersimpan.
 
-**3. Tampilkan Data**
+**3. Tampilkan Data Layanan**
 
 <img width="169" height="130" alt="image" src="https://github.com/user-attachments/assets/54ed4e76-4d8f-4d8a-8861-ccb157958328" />
 
@@ -122,7 +121,7 @@ Selanjutnya, jika memilih menu nomor 2 pada menu utama, maka kita akan dialihkan
 
 Kedua gambar di atas merupakan tampilan daftar Data Layanan yang berfungsi untuk menampilkan seluruh data layanan yang telah tersimpan di dalam sistem.
 
-**4. Update Data**
+**4. Update Data Layanan**
 
 <img width="170" height="128" alt="image" src="https://github.com/user-attachments/assets/93035bc0-dd49-46c3-aa63-b3a0fc0f9fa4" />
 
@@ -132,7 +131,7 @@ Selanjutnya, jika memilih menu nomor 3 pada menu utama, maka kita akan dialihkan
 
 Pada menu Update Data Layanan, kita diminta untuk memasukkan ID Layanan yang ingin diubah, lalu mengisi formulir data baru seperti pada gambar di atas. Setelah seluruh data diisi, sistem akan menampilkan notifikasi "Horee! data sudah berhasil diupdate." yang menandakan data telah diperbarui.
 
-**5. Hapus Data**
+**5. Hapus Data Layanan**
 
 <img width="169" height="131" alt="image" src="https://github.com/user-attachments/assets/a741f413-3cd0-4d9d-81b6-fbde05743352" />
 
